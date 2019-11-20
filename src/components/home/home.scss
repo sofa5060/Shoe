@@ -1,0 +1,140 @@
+/* Imports */
+@import url('https://fonts.googleapis.com/css?family=Righteous&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap');
+
+/* variables */
+$bg:#F9F9F9;
+$main:#36E3D9;
+
+/* general */
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    transition: 0.2s all ease;
+
+    &:hover{
+        color: $main;
+    }
+}
+
+li {
+    list-style: none;
+}
+
+/* Home Screen */
+
+nav{
+
+    .grey-back{
+        background: $bg;
+    }
+
+    .up{
+        max-width: 1180px;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding:15px;
+
+        .left{
+            display: flex;
+
+            h5{
+                padding: 0 10px;
+            }
+
+            span{
+                color: $main;
+            }
+        }
+
+        .right{
+            display: flex;
+
+            h5{
+                padding: 0  20px;
+            }
+        }
+    }
+
+    .middle{
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 36px;
+        display: flex;
+        justify-content: space-between;
+
+        .logo{
+            flex: 1;
+            font-family: 'Righteous', cursive;
+            font-size: 27px;
+            letter-spacing: 5px;
+            align-self: center;
+            color: #6B6F81;
+        }
+
+        .search{
+            flex: 5;
+            align-self: center;
+            border-radius: 2px 0px 0px 2px;
+
+            input[type=text]{
+                max-width: 380px;
+                width: 100%;
+                padding: 14px 50px;
+                margin: 0 -1px 0 0;
+                border: 1px solid #E4E5EC;
+                background-image: url(../img/Vector.svg);
+                background-repeat: no-repeat;
+                background-position: 15px;
+
+            }
+
+            input[type=submit]{
+                padding: 15px 30px;
+                border: 0;
+                font-weight: 500;
+                background: $main;
+                color: white;
+                cursor: pointer;
+            }
+
+            input:focus{
+                outline-width: 0;
+            }
+        }
+        .cart{
+            align-self: center;
+            padding: 15px 30px;
+            border: 1px solid $main;
+            color: $main;
+            cursor: pointer;
+            transition: 0.3s all ease;
+
+            &:hover{
+                color: #fff;
+                background: $main;
+            }
+        }
+    }
+
+    .down{
+        display: flex;
+        max-width: 1200px;
+        margin: 0 auto;
+        justify-content: center;
+
+        li{
+            padding: 25px 50px;
+        }
+    }
+}
