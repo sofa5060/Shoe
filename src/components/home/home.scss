@@ -431,7 +431,7 @@ nav {
 
           .link{
             padding: 15px 20px;
-            margin: 0 10px 0 0;
+            margin: 20px 20px 0 0;
             background: #3A3C4C;
           }
         }
@@ -439,8 +439,9 @@ nav {
         input{
           padding: 15px 20px;
           height: 50px;
-          background: url(../img/Arrow.png) no-repeat white 180px;
+          background: url(../img/Arrow.png) no-repeat white 270px;
           border: 0;
+          min-width: 300px;
         }
       }
     }

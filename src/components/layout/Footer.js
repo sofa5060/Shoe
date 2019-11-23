@@ -65,13 +65,6 @@ export default class Footer extends Component {
               </li>
             </ul>
             <ul className="col">
-              <h4>Visit Us</h4>
-              <li>
-                23, Masaken El-Zobat st, El Haram st. <br />
-                EL Omranya el Gharbya, Giza, Egypt
-              </li>
-            </ul>
-            <ul className="col">
               <h4>Social links </h4>
               <div className="links">
                 <a href="" className="link">
