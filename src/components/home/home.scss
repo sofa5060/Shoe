@@ -388,3 +388,67 @@ nav {
         }
     }
 }
+
+.footer{
+  background: #353745;
+
+  footer{
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 50px;
+    display: flex;
+    flex-direction: column;
+    color: #A5A8BB;
+
+    a{
+      color: #7F829A;
+    }
+
+    h1{
+      color: #fff;
+    }
+
+    .row{
+      display: flex;
+      justify-content: space-between;
+      padding: 50px 0;
+
+      .col{
+        flex: 1;
+        h4{
+          margin: 0 0 20px 0;
+        }
+
+        li{
+          margin: 0 0 10px 0;
+          color: #7F829A;
+          line-height: 34px;
+        }
+
+        .links{
+          display: flex;
+
+          .link{
+            padding: 15px 20px;
+            margin: 0 10px 0 0;
+            background: #3A3C4C;
+          }
+        }
+
+        input{
+          padding: 15px 20px;
+          height: 50px;
+          background: url(../img/Arrow.png) no-repeat white 180px;
+          border: 0;
+        }
+      }
+    }
+
+    .row-2{
+      .col{
+        flex: unset;
+      }
+    }
+  }
+}

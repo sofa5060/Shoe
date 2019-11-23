@@ -11,59 +11,14 @@ import fast from "../img/Fast.png";
 import shield from "../img/Shield.png";
 import medal from "../img/Medal.png";
 import "./home.css";
+import NavBar from "../layout/NavBar";
+import Footer from "../layout/Footer";
 
 export default class Home extends Component {
   render() {
     return (
       <div>
-        <nav>
-          <div className="up">
-            <div className="left">
-              <h5>24/7 Support</h5>
-              <span>1-333-444-5544</span>
-            </div>
-            <div className="right">
-              <h5>
-                <a href="">Track your order</a>
-              </h5>
-              <h5>
-                <a href="">$ Dollar (US)</a>
-              </h5>
-              <h5>
-                <a href="">Language (En)</a>
-              </h5>
-            </div>
-          </div>
-          <div className="white-back">
-            <div className="middle">
-              <div className="logo">SHOE</div>
-              <div className="search">
-                <input type="text" id="search" />
-                <input type="submit" value="SEARCH" />
-              </div>
-              <div className="cart">
-                <h4>MY CART</h4>
-              </div>
-            </div>
-            <ul className="down">
-              <li>
-                <a href="">WOMEN</a>
-              </li>
-              <li>
-                <a href="">MEN</a>
-              </li>
-              <li>
-                <a href="">KIDS</a>
-              </li>
-              <li>
-                <a href="">RUNNING</a>
-              </li>
-              <li>
-                <a href="">DEALS</a>
-              </li>
-            </ul>
-          </div>
-        </nav>
+        <NavBar />
         <div className="hero-section">
           <div className="row">
             <div className="card card-1">
@@ -183,21 +138,31 @@ export default class Home extends Component {
               <div className="box">
                 <img src={fast} alt=""/>
                 <h2>Fast Delivery</h2>
-                <h3>Get Delivered fast when you buy anything from us we have fast Deliveries</h3>
+                <h3>
+                  Get Delivered fast when you buy anything from us we have fast
+                  Deliveries
+                </h3>
               </div>
               <div className="box">
                 <img src={medal} alt=""/>
                 <h2>High quality</h2>
-                <h3>Get Delivered fast when you buy anything from us we have fast Deliveries</h3>
+                <h3>
+                  Get Delivered fast when you buy anything from us we have fast
+                  Deliveries
+                </h3>
               </div>
               <div className="box">
                 <img src={shield} alt=""/>
                 <h2>No Risk</h2>
-                <h3>If you don’t like or have any problem you can cancel anytime you want</h3>
+                <h3>
+                  If you don’t like or have any problem you can cancel anytime
+                  you want
+                </h3>
               </div>
             </div>
           </div>
         </div>
+        <Footer />
       </div>
     );
   }
