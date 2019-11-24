@@ -1,6 +1,17 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
+import Vector from "../img/Vector-2.png"
 
 export default class NavBar extends Component {
+  // show & hide side menu
+  openSlideMenu = () => {
+    document.getElementById("side-menu").style.width = "250px";
+  };
+
+  closeSlideMenu = () => {
+    document.getElementById("side-menu").style.width = "0px";
+  };
+
   render() {
     return (
       <nav>
@@ -23,16 +34,40 @@ export default class NavBar extends Component {
         </div>
         <div className="white-back">
           <div className="middle">
-            <div className="logo">SHOE</div>
-            <div className="search">
-              <input type="text" id="search" />
-              <input type="submit" value="SEARCH" />
+            <a onClick={this.openSlideMenu} className="hamburger">
+              <svg width="21" height="21">
+                <path d="M0,5 30,5" stroke="#333" strokeWidth="3" />
+                <path d="M0,12 30,12" stroke="#333" strokeWidth="3" />
+                <path d="M0,19 30,19" stroke="#333" strokeWidth="3" />
+              </svg>
+            </a>
+            <div id="side-menu" className="side-nav">
+              <a className="btn-close" onClick={this.closeSlideMenu}>
+                <svg width="21" height="21">
+                  <path d="M0,5 30,5" stroke="#333" strokeWidth="3" />
+                  <path d="M0,12 30,12" stroke="#333" strokeWidth="3" />
+                  <path d="M0,19 30,19" stroke="#333" strokeWidth="3" />
+                </svg>
+              </a>
+              <a onClick={this.closeSlideMenu}>Home</a>
+              <a onClick={this.closeSlideMenu}>Travel info</a>
+              <a onClick={this.closeSlideMenu}>Gallery</a>
             </div>
-            <div className="cart">
+            <div className="logo">SHOE.</div>
+            <div className="search hide">
+              <input type="text" id="search" />
+              <input type="submit" value="SEARCH"/>
+            </div>
+            <div className="cart hide">
               <h4>MY CART</h4>
             </div>
+            <img src={Vector} className="tablet" alt=""/>
           </div>
-          <ul className="down">
+          <div className="search-2 tablet">
+              <input type="text" id="search" />
+              <input type="submit" value="SEARCH"/>
+          </div>
+          <ul className="down hide">
             <li>
               <a href="">WOMEN</a>
             </li>

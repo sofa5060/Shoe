@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import fb from "../img/fb.png";
 import instagram from "../img/instagram.png";
@@ -53,7 +54,7 @@ export default class Footer extends Component {
               </li>
             </ul>
           </div>
-          <hr />
+          <hr className="hide" />
           <div className="row row-2">
             <ul className="col">
               <h4>Contact us</h4>

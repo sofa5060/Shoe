@@ -2,11 +2,30 @@
 @import url("https://fonts.googleapis.com/css?family=Righteous&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap");
 
-/* variables */
-$bg: #f9f9f9;
-$main: #36e3d9;
+/* Variables */
+$bg-color: #f9f9f9;
+$main-color: #36e3d9;
 
-/* general */
+/* Mixins */
+@mixin desktop {
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 814px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
+/* General */
 * {
   padding: 0;
   margin: 0;
@@ -15,7 +34,11 @@ $main: #36e3d9;
 }
 
 body {
-  background: $bg;
+  background: $bg-color;
+
+  input:focus {
+    outline-width: 0;
+  }
 }
 
 a {
@@ -24,7 +47,7 @@ a {
   transition: 0.3s all ease;
 
   &:hover {
-    color: $main;
+    color: $main-color;
   }
 }
 
@@ -32,13 +55,37 @@ li {
   list-style: none;
 }
 
-/* Home Screen */
+// Showing things on mobile only 
+.phone{
+  display: none;
+
+  @include phone{
+    display: block;
+  }
+}
+
+// Showing thins on tablet only
+.tablet{
+  display: none !important;
+
+  @include tablet{
+    display: flex !important;
+  }
+}
+
+// Hiding things from desktop
+.hide{
+  @include tablet{
+    display: none !important;
+  }
+}
+
 .white-back {
   background: #fff;
 }
 
+/* Home Screen */
 nav {
-
   .up {
     max-width: 1180px;
     margin: 0 auto;
@@ -46,6 +93,10 @@ nav {
     display: flex;
     justify-content: space-between;
     padding: 15px;
+
+    @include tablet{
+      display: none;
+    }
 
     .left {
       display: flex;
@@ -55,7 +106,7 @@ nav {
       }
 
       span {
-        color: $main;
+        color: $main-color;
       }
     }
 
@@ -83,6 +134,10 @@ nav {
       letter-spacing: 5px;
       align-self: center;
       color: #6b6f81;
+
+      @include tablet{
+        font-size: 19px;
+      }
     }
 
     .search {
@@ -105,27 +160,108 @@ nav {
         padding: 15px 30px;
         border: 0;
         font-weight: 500;
-        background: $main;
+        background: $main-color;
         color: white;
         cursor: pointer;
-      }
-
-      input:focus {
-        outline-width: 0;
       }
     }
     .cart {
       align-self: center;
       padding: 15px 30px;
-      border: 1px solid $main;
-      color: $main;
+      border: 1px solid $main-color;
+      color: $main-color;
       cursor: pointer;
       transition: 0.3s all ease;
+      display: flex;
 
       &:hover {
         color: #fff;
-        background: $main;
+        background: $main-color;
       }
+    }
+
+    img{
+      width: 20px;
+      height: 20px;
+      align-self: center;
+    }
+
+    .side-nav {
+      display: block;
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+      background-color: #fff;
+      opacity: 1;
+      overflow-x: hidden;
+      padding-top: 60px;
+      transition: 0.5s;
+
+      .btn-close {
+        position: absolute;
+        top: 0;
+        font-size: 36px;
+        margin-right: 50px;
+        cursor: pointer;
+      }
+
+      a {
+        flex: 1;
+        padding: 10px 10px 10px 30px;
+        font-size: 22px;
+        display: block;
+        transition: 0.3s;
+        color: black;
+      }
+    }
+
+    .hamburger {
+      display: none;
+      
+      @include tablet {
+        display: block;
+        cursor: pointer;
+        align-self: center;
+        padding: 5px 15px 0 0;
+      }
+    }
+  }
+
+  .search-2 {
+    display: flex;
+    align-self: center;
+    border-radius: 2px 0px 0px 2px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 25px;
+
+    input[type="text"] {
+      max-width: 380px;
+      width: 100%;
+      padding: 14px 50px;
+      margin: 0 -1px 0 0;
+      border: 1px solid #e4e5ec;
+      background-image: url(../img/Vector.svg);
+      background-repeat: no-repeat;
+      background-position: 15px;
+      align-self: center;
+    }
+
+    input[type="submit"] {
+      padding: 15px 30px;
+      border: 0;
+      font-weight: 500;
+      background: $main-color;
+      color: white;
+      cursor: pointer;
+    }
+
+    input:focus {
+      outline-width: 0;
     }
   }
 
@@ -138,6 +274,7 @@ nav {
     li {
       padding: 25px 50px;
     }
+
   }
 }
 
@@ -151,6 +288,14 @@ nav {
 
   .row {
     display: flex;
+    
+    @include tablet{
+      flex-direction: column;
+    }
+
+    .row-1{
+      display: flex;
+    }
 
     .card {
       flex: 1;
@@ -161,12 +306,11 @@ nav {
 
       a:hover {
         color: #fff;
-        background: $main;
+        background: $main-color;
       }
 
       img {
         width: 100%;
-        min-height: 400px;
       }
 
       .text {
@@ -180,6 +324,15 @@ nav {
         padding: 15px 25px;
         border: 1px solid #36e3d9;
         color: #36e3d9;
+
+        @include tablet{
+          padding: 15px;
+        }
+
+        @include phone{
+          font-size: 11px;
+          padding: 10px 5px;
+        }
       }
 
       &-1 {
@@ -192,6 +345,10 @@ nav {
           font-weight: 600;
           font-size: 64px;
           margin: 0 0 40px 0;
+
+          @include phone{
+            font-size: 36px;
+          }
         }
       }
 
@@ -200,6 +357,11 @@ nav {
           font-weight: 300;
           font-size: 36px;
           margin: 0 0 40px 0;
+
+          @include phone{
+            font-weight: 500;
+            font-size: 18px;
+          }
         }
       }
 
@@ -208,17 +370,39 @@ nav {
           font-weight: 300;
           font-size: 36px;
           margin: 0 0 40px 0;
+
+          @include phone{
+            font-weight: 500;
+            font-size: 18px;
+          }
         }
       }
 
       &-4 {
         h2 {
-          padding: 80px 20px;
           font-weight: bold;
           font-size: 20px;
-          background-color: #36e3d9;
           border-radius: 6px;
           line-height: 40px;
+          border-radius: 6px;
+          background: url(../img/placeholder.svg) no-repeat;
+          padding: 60px 20px;
+          background-size: cover;
+
+          @include desktop{
+            padding: 20px;
+          }
+
+          @include tablet{
+            font-weight: bold;
+            font-size: 25px;
+            padding: 160px 100px;
+          }
+
+          @include phone{
+            font-size: 18px;
+            padding: 20% 10%;
+          }
         }
       }
     }
@@ -228,7 +412,7 @@ nav {
 .section-2 {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 100px 25px;
 
   .bar {
     display: flex;
@@ -252,6 +436,10 @@ nav {
       background: #fff;
       min-height: 200px;
 
+      @include phone {
+        min-height: 300px;
+      }
+
       .left {
         max-width: 125px;
         margin: 20px;
@@ -269,6 +457,10 @@ nav {
           font-weight: normal;
           font-size: 16px;
           color: #464855;
+
+          @include phone{
+            font-size: 12px;
+          }
         }
 
         h4 {
@@ -332,6 +524,11 @@ nav {
           border-radius: 6px;
           font-weight: normal;
           font-size: 12px;
+          text-align:center;
+        }
+
+        @include phone{
+          display: none;
         }
       }
 
@@ -345,6 +542,11 @@ nav {
         h4 {
           background: #ffbf71;
         }
+      }
+
+      @include tablet{
+        flex-direction: column;
+        align-items: center;
       }
     }
   }
@@ -367,11 +569,15 @@ nav {
     .boxes{
         display: flex;
         justify-content: space-between;
-        padding: 80px 0;
+        padding: 80px 50px;
 
         .box{
             flex: 1;
             padding: 0 30px;
+
+            @include phone{
+              padding: 50px 0;
+            }
 
             h2{
                 font-weight: normal;
@@ -385,6 +591,10 @@ nav {
                 font-size: 16px;
                 color: #898EA2;
             }
+        }
+
+        @include phone{
+          flex-direction: column;
         }
     }
 }
@@ -414,10 +624,19 @@ nav {
       justify-content: space-between;
       padding: 50px 0;
 
+      @include tablet{
+        flex-direction: column;
+        padding: 50px 0 0 0;
+      }
+
       .col{
         flex: 1;
         h4{
           margin: 0 0 20px 0;
+
+          @include tablet{
+            margin: 20px 0;
+          }
         }
 
         li{
@@ -433,6 +652,10 @@ nav {
             padding: 15px 20px;
             margin: 20px 20px 0 0;
             background: #3A3C4C;
+
+            @include phone{
+              margin: 20px 10px 0 0;
+            }
           }
         }
 
@@ -442,11 +665,21 @@ nav {
           background: url(../img/Arrow.png) no-repeat white 270px;
           border: 0;
           min-width: 300px;
+
+          @include phone{
+            width: inherit;
+            min-width: 220px;
+            background-position: 195px;
+          }
         }
       }
     }
 
     .row-2{
+      @include tablet {
+        padding: 0 0 100px 0;
+      }
+
       .col{
         flex: unset;
       }

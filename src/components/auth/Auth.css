@@ -1,0 +1,142 @@
+.form {
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+
+.form h1 {
+  font-family: Righteous;
+  padding: 0 0 30px 0;
+  font-size: 35px;
+  line-height: 43px;
+  letter-spacing: 5px;
+  color: #6b6f81;
+  text-align: center;
+}
+
+.form form {
+  padding: 50px 75px;
+  background: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.form form h3 {
+  padding: 0 0 30px 0;
+  color: #464855;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.form form .row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0 0 20px 0;
+}
+
+.form form .row h4 {
+  color: #6b6f81;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.form form .row input {
+  margin: 5px 0 0 0;
+  padding: 15px;
+  border: 1px solid #e4e5ec;
+  -webkit-box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.05);
+          box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.05);
+  border-radius: 2px;
+}
+
+.form form h5 {
+  margin: 30px 0 0 0;
+  color: #999999;
+  font-weight: normal;
+  font-size: 11px;
+}
+
+.form form input[type="submit"] {
+  color: #ffffff;
+  background: #36e3d9;
+  border-radius: 2px;
+  padding: 15px 0;
+  margin: 20px 0;
+  border: 0;
+}
+
+.form form .or {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: 1.2rem 0;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  max-width: 450px;
+}
+
+.form form .or .bar {
+  -webkit-box-flex: 1;
+      -ms-flex: auto;
+          flex: auto;
+  border: none;
+  height: 1px;
+  background: #aaa;
+}
+
+.form form .or span {
+  color: #ccc;
+  padding: 0 0.8rem;
+}
+
+.form form h6 {
+  text-align: center;
+  color: #999999;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.form form h6 a {
+  color: #36e3d9;
+}
+
+.form .terms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  max-width: 400px;
+  margin: 30px auto;
+}
+
+.form .terms h6 {
+  color: #464855;
+}
+
+.form h6 {
+  text-align: center;
+  font-weight: 300;
+  font-size: 14px;
+  color: #898ea2;
+}
+/*# sourceMappingURL=Auth.css.map */
