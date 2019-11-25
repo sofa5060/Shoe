@@ -1,8 +1,25 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import Vector from "../img/Vector-2.png"
+import { connect } from "react-redux";
+import { Redirect, Link } from "react-router-dom";
 
-export default class NavBar extends Component {
+class NavBar extends Component {
+  state={
+    search:""
+  }
+
+  handleChange = e => {
+    this.setState({
+      [e.target.id]:e.target.value
+    })
+    console.log(this.state)
+  }
+
+  handeSubmit = () => {
+    console.log(this.props)
+    //this.props.history.push("/search")
+  }
   // show & hide side menu
   openSlideMenu = () => {
     document.getElementById("side-menu").style.width = "250px";
@@ -55,8 +72,8 @@ export default class NavBar extends Component {
             </div>
             <div className="logo">SHOE.</div>
             <div className="search hide">
-              <input type="text" id="search" />
-              <input type="submit" value="SEARCH"/>
+              <input type="text" id="search" onChange={this.handleChange}/>
+              <input type="submit" value="SEARCH" onClick={this.handeSubmit}/>
             </div>
             <div className="cart hide">
               <h4>MY CART</h4>
@@ -89,3 +106,15 @@ export default class NavBar extends Component {
     );
   }
 }
+
+const mapStateToProps = (state,ownProps) => {
+  console.log(state,ownProps);
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+      
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
