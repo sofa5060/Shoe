@@ -2,28 +2,30 @@ import React, { Component } from "react";
 import "./Auth.css";
 import { connect } from "react-redux";
 import { Redirect, Link } from "react-router-dom";
-import {signUp} from "../store/actions/authActions"
-import firebase from "firebase"
+import { signUp } from "../store/actions/authActions";
+import firebase from "firebase";
 
 class SignUp extends Component {
-    state = {
-        email: "",
-        password: "",
-        fullName:""
-    };
+  state = {
+    email: "",
+    password: "",
+    fullName: ""
+  };
 
-    handleChange = e => {
-        this.setState({
-            [e.target.id]:e.target.value
-        })
-    }
+  handleChange = e => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
+  };
 
-    handleSubmit = e => {
-        e.preventDefault()
-        this.props.signUp(this.state)
-    }
+  handleSubmit = e => {
+    e.preventDefault();
+    this.props.signUp(this.state);
+  };
 
   render() {
+    const { auth } = this.props;
+    if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="form">
         <h1>SHOE.</h1>
@@ -31,15 +33,30 @@ class SignUp extends Component {
           <h3>Sign up</h3>
           <div className="row">
             <h4>Full Name</h4>
-            <input type="text" id="fullName" placeholder="John Doe" onChange={this.handleChange}/>
+            <input
+              type="text"
+              id="fullName"
+              placeholder="John Doe"
+              onChange={this.handleChange}
+            />
           </div>
           <div className="row">
             <h4>Email</h4>
-            <input type="email" id="email" placeholder="Example@mail.com" onChange={this.handleChange} />
+            <input
+              type="email"
+              id="email"
+              placeholder="Example@mail.com"
+              onChange={this.handleChange}
+            />
           </div>
           <div className="row">
             <h4>password</h4>
-            <input type="password" id="password" placeholder="*******" onChange={this.handleChange} />
+            <input
+              type="password"
+              id="password"
+              placeholder="*******"
+              onChange={this.handleChange}
+            />
           </div>
           <h5>By singing up you’re acepting our terms & conditions</h5>
           <input type="submit" value="Sign up" />
@@ -48,12 +65,14 @@ class SignUp extends Component {
             <span>OR</span>
             <hr className="bar" />
           </div>
-          <h6>Already a member <Link to="../signin">Sign in</Link></h6>
+          <h6>
+            Already a member <Link to="../signin">Sign in</Link>
+          </h6>
         </form>
         <div className="terms">
-            <h6>Conditions of Use</h6>
-            <h6>Privacy Notice</h6>
-            <h6>Help</h6>
+          <h6>Conditions of Use</h6>
+          <h6>Privacy Notice</h6>
+          <h6>Help</h6>
         </div>
         <h6>© 2020 SHOE. All rights reserved.</h6>
       </div>
@@ -63,13 +82,17 @@ class SignUp extends Component {
 
 // mapping state and dispatch to props
 const mapStateToProps = state => {
-    console.log(state);
+  console.log(state);
+  const auth = state.firebase.auth ? state.firebase.auth : null;
+  return {
+    auth
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-        signUp : (user) => dispatch(signUp(user))
-    };
+  return {
+    signUp: user => dispatch(signUp(user))
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
