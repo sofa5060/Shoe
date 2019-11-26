@@ -14,109 +14,21 @@ import shoe4 from "../img/shoe4.png";
 import fast from "../img/Fast.png";
 import shield from "../img/Shield.png";
 import medal from "../img/Medal.png";
-import Vector from "../img/Vector-2.png"
 import "./home.css";
 import Footer from "../layout/Footer"
+import NavBar from "../layout/NavBar"
 
-export default class Home extends Component {
-  state={
-    search:""
+export default class Home extends Component { 
+
+  // making a search based on the input given by the navbar
+  handleSubmit = search => {
+    this.props.history.push("/search/"+ search)
   }
-
-  handleChange = e => {
-    this.setState({
-      [e.target.id]:e.target.value
-    })
-    console.log(this.state)
-  }
-
-  handleSubmit = () => {
-    this.props.history.push("/search/"+this.state.search)
-  }
-
-  openSlideMenu = () => {
-    document.getElementById("side-menu").style.width = "250px";
-  };
-
-  closeSlideMenu = () => {
-    document.getElementById("side-menu").style.width = "0px";
-  };
-
   render() {
     return (
       <div>
-      <nav>
-        <div className="up">
-          <div className="left">
-            <h5>24/7 Support</h5>
-            <span>1-333-444-5544</span>
-          </div>
-          <div className="right">
-            <h5>
-              <a href="">Track your order</a>
-            </h5>
-            <h5>
-              <a href="">$ Dollar (US)</a>
-            </h5>
-            <h5>
-              <a href="">Language (En)</a>
-            </h5>
-          </div>
-        </div>
-        <div className="white-back">
-          <div className="middle">
-            <a onClick={this.openSlideMenu} className="hamburger">
-              <svg width="21" height="21">
-                <path d="M0,5 30,5" stroke="#333" strokeWidth="3" />
-                <path d="M0,12 30,12" stroke="#333" strokeWidth="3" />
-                <path d="M0,19 30,19" stroke="#333" strokeWidth="3" />
-              </svg>
-            </a>
-            <div id="side-menu" className="side-nav">
-              <a className="btn-close" onClick={this.closeSlideMenu}>
-                <svg width="21" height="21">
-                  <path d="M0,5 30,5" stroke="#333" strokeWidth="3" />
-                  <path d="M0,12 30,12" stroke="#333" strokeWidth="3" />
-                  <path d="M0,19 30,19" stroke="#333" strokeWidth="3" />
-                </svg>
-              </a>
-              <a onClick={this.closeSlideMenu}>Home</a>
-              <a onClick={this.closeSlideMenu}>Travel info</a>
-              <a onClick={this.closeSlideMenu}>Gallery</a>
-            </div>
-            <div className="logo">SHOE.</div>
-            <form className="search hide" onSubmit={this.handleSubmit}>
-              <input type="text" id="search" onChange={this.handleChange}/>
-              <input type="submit" value="SEARCH"/>
-            </form>
-            <div className="cart hide">
-              <h4>MY CART</h4>
-            </div>
-            <img src={Vector} className="tablet" alt=""/>
-          </div>
-          <form className="search-2 tablet" onSubmit={this.handleSubmit}>
-              <input type="text" id="search" onChange={this.handleChange}/>
-              <input type="submit" value="SEARCH"/>
-          </form>
-          <ul className="down hide">
-            <li>
-              <a href="">WOMEN</a>
-            </li>
-            <li>
-              <a href="">MEN</a>
-            </li>
-            <li>
-              <a href="">KIDS</a>
-            </li>
-            <li>
-              <a href="">RUNNING</a>
-            </li>
-            <li>
-              <a href="">DEALS</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+        {/* adding submit method to the navbar to be able to make search from navbar */}
+        <NavBar submit={search => this.handleSubmit(search)}/>
         <div className="hero-section">
           <div className="row">
             <div className="card card-1">

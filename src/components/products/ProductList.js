@@ -6,12 +6,11 @@ import ProductSummary from "./ProductSummary";
 class ProductList extends Component {
   render() {
     const { results } = this.props;
-    console.log(results);
     return (
-      <div>
+      <div className="products-list">
         {results.map(result => {
           return (
-            <Link to={"/products/" + result[1]}>
+            <Link to={"/products/" + result[1]} key={result[1]}>
               <ProductSummary result={result[0]}/>
             </Link>
           );
@@ -30,7 +29,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  return {
+
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList);

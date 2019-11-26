@@ -13,17 +13,20 @@ class SignUp extends Component {
   };
 
   handleChange = e => {
+    // updating the state based on user's input
     this.setState({
       [e.target.id]: e.target.value
     });
   };
 
   handleSubmit = e => {
+    // signing user up based on inputs in state
     e.preventDefault();
     this.props.signUp(this.state);
   };
 
   render() {
+    // getting auth from props and redirect him homepage if he signed in
     const { auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
@@ -82,7 +85,7 @@ class SignUp extends Component {
 
 // mapping state and dispatch to props
 const mapStateToProps = state => {
-  console.log(state);
+  // mapping auth to props
   const auth = state.firebase.auth ? state.firebase.auth : null;
   return {
     auth
@@ -90,6 +93,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
+  // mapping sign up method to props and dispatching it
   return {
     signUp: user => dispatch(signUp(user))
   };

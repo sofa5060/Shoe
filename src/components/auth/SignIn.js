@@ -11,17 +11,20 @@ class SignIn extends Component {
   };
 
   handleChange = e => {
+    // updating the state based on user's input
     this.setState({
       [e.target.id]: e.target.value
     });
   };
 
   handleSubmit = e => {
+    // signing user in based on inputs in state
     e.preventDefault();
     this.props.signIn(this.state);
   };
 
   render() {
+    // getting auth from props and redirect him homepage if he signed in
     const { auth } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
@@ -71,14 +74,15 @@ class SignIn extends Component {
 
 // mapping state and dispatch to props
 const mapStateToProps = state => {
-  console.log(state);
   const auth = state.firebase.auth ? state.firebase.auth : null;
+  // mapping user auth to props
   return {
     auth
   };
 };
 
 const mapDispatchToProps = dispatch => {
+  // mapping sign in method to props and dispatching it
   return {
     signIn: user => dispatch(signIn(user))
   };
