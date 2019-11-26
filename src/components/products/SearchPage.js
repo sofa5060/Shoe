@@ -8,7 +8,7 @@ import "./Product.css";
 
 class SearchPage extends Component {
   state = {
-    results: []
+    results: [],
   };
 
   componentWillMount = () => {
@@ -22,7 +22,6 @@ class SearchPage extends Component {
       .onSnapshot(snapshot => {
         snapshot.forEach(doc => {
           if (doc) {
-            console.log(doc);
             const result = [doc.data(), doc.id];
             results.push(result);
           }
