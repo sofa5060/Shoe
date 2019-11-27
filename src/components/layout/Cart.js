@@ -35,16 +35,20 @@ class Cart extends Component {
 
     db.collection("products");
   };
+
+  handleSubmit = () => {
+    this.props.history.push("/")
+  }
   render() {
     const { ids } = this.state;
     if (ids.length) {
       return (
         <div>
           <NavBar submit={search => this.handleSubmit(search)} />
-            <div className="cart">
+            <div className="cart-page">
               <CartList ids={ids} />
               <hr/>
-              <form className="check-out">
+              <form className="check-out" onSubmit={this.handleSubmit}>
                 <h1>Credit card details</h1>
                 <h2>Card holder’s name</h2>
                 <input type="text" placeholder="John doe"/>
