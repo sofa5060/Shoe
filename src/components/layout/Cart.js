@@ -4,6 +4,7 @@ import { Redirect, Link } from "react-router-dom";
 import firebase from "firebase";
 import CartList from "./CartList";
 import NavBar from "./NavBar"
+import Footer from "./Footer"
 
 class Cart extends Component {
   state = {
@@ -40,6 +41,7 @@ class Cart extends Component {
         <div>
           <NavBar submit={search => this.handleSubmit(search)} />
           <CartList ids={ids} />
+          <Footer />
         </div>
       );
     } else {
