@@ -5,6 +5,7 @@ import firebase from "firebase";
 import CartList from "./CartList";
 import NavBar from "./NavBar"
 import Footer from "./Footer"
+import "./Cart.css"
 
 class Cart extends Component {
   state = {
@@ -40,7 +41,28 @@ class Cart extends Component {
       return (
         <div>
           <NavBar submit={search => this.handleSubmit(search)} />
-          <CartList ids={ids} />
+            <div className="cart">
+              <CartList ids={ids} />
+              <hr/>
+              <form className="check-out">
+                <h1>Credit card details</h1>
+                <h2>Card holder’s name</h2>
+                <input type="text" placeholder="John doe"/>
+                <h2>Credit card number</h2>
+                <input type="number" placeholder="1234  5678  9101  1213"/>
+                <div className="row">
+                  <div className="box">
+                    <h2>Expiration date</h2>
+                    <input type="text" placeholder="06/2020"/>
+                  </div>
+                  <div className="box">
+                    <h2>CVV</h2>
+                    <input type="number" placeholder="123"/>
+                  </div>
+                </div>
+                <input type="submit" value="CHECKOUT"/>
+              </form>
+            </div>
           <Footer />
         </div>
       );

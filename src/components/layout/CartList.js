@@ -1,32 +1,30 @@
-import React, { Component } from 'react'
-import CartProduct from "./CartProduct"
+import React, { Component } from "react";
+import CartProduct from "./CartProduct";
 
 export default class CartList extends Component {
-    state={
-        ids:[]
-        
-    }
-    componentWillMount = () => {
-        const {ids} = this.props
-        this.setState({
-            ids
-        })
-    }
-    render() {
-        const {ids} = this.state
-        return (
-            <div className="cart-list">
-            <div className="row">
-                    <h3>Product</h3>
-                    <h3>Name</h3>
-                    <h3>Size</h3>
-                    <h3>Quantity</h3>
-                    <h3>Total</h3>
-                </div>
-                {ids.map(id => {
-                    return <CartProduct id={id}/>
-                })}    
-            </div>
-        )
-    }
+  state = {
+    ids: []
+  };
+  componentWillMount = () => {
+    const { ids } = this.props;
+    this.setState({
+      ids
+    });
+  };
+  render() {
+    const { ids } = this.state;
+    return (
+      <div className="cart-list">
+          <div className="row-2">
+            <h4>Name</h4>
+            <h4>Size</h4>
+            <h4>Quantity</h4>
+            <h4>Total</h4>
+          </div>
+        {ids.map(id => {
+          return <CartProduct id={id} />;
+        })}
+      </div>
+    );
+  }
 }
