@@ -9,6 +9,8 @@ import "./Product.css";
 class SearchPage extends Component {
   state = {
     results: [],
+    terms:[],
+    filteredResults: []
   };
 
   componentWillMount = () => {
@@ -27,7 +29,8 @@ class SearchPage extends Component {
           }
         });
         this.setState({
-          results
+          results,
+          filteredResults: results
         });
       });
   };
@@ -35,8 +38,67 @@ class SearchPage extends Component {
   handleSubmit = search => {
     this.props.history.push("/search/" + search);
   };
+
+  checkTerm = () => {
+    let checkedValue = [];
+    let inputElements = document.getElementsByClassName("checkbox");
+    for (var i = 0; inputElements[i]; ++i) {
+      if (inputElements[i].checked) {
+        checkedValue.push(inputElements[i].value);
+      }
+    }
+    this.setState(
+      {
+        terms: checkedValue
+      },
+      () => {this.getDataWithFilters()}
+    );
+  };
+
+  getDataWithFilters = () => {
+    const { results, terms } = this.state;
+    if (terms.length) {
+      let filteredResults = [];
+      for (let i = 0; i < results.length; i++) {
+        let result = results[i];
+        for (let l = 0; l < terms.length; l++) {
+          console.log("here")
+          let term = terms[l];
+          if (result[0]["type"] === term || result[0]["brand"] === term || result[0]["color"] === term) {
+            if(filteredResults.includes(result)){
+              return
+            }else{
+              filteredResults.push(result);
+            }
+          }
+        }
+      }
+      this.setState({
+        filteredResults
+      });
+    } else {
+      const db = firebase.firestore();
+      const search = this.props.search;
+      let results = [];
+      db.collection("products")
+        .orderBy("name")
+        .startAt(search)
+        .onSnapshot(snapshot => {
+          snapshot.forEach(doc => {
+            if (doc) {
+              const result = [doc.data(), doc.id];
+              results.push(result);
+            }
+          });
+          this.setState({
+            filteredResults: results
+          });
+        });
+    }
+  };
+
   render() {
-    const { results } = this.state;
+    const { filteredResults } = this.state;
     return (
       <div>
         <NavBar submit={search => this.handleSubmit(search)} />
@@ -45,19 +107,39 @@ class SearchPage extends Component {
             <h3>FOR</h3>
             <div className="list">
               <div className="row">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value="Men"
+                  className="checkbox"
+                  onChange={this.checkTerm}
+                />
                 <h5>Men</h5>
               </div>
               <div className="row">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value="Women"
+                  className="checkbox"
+                  onChange={this.checkTerm}
+                />
                 <h5>Women</h5>
               </div>
               <div className="row">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value="Babies"
+                  className="checkbox"
+                  onChange={this.checkTerm}
+                />
                 <h5>Babies</h5>
               </div>
               <div className="row">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value="Running"
+                  className="checkbox"
+                  onChange={this.checkTerm}
+                />
                 <h5>Running</h5>
               </div>
             </div>
@@ -65,15 +147,30 @@ class SearchPage extends Component {
             <h3>Brand</h3>
             <div className="list">
               <div className="row">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value="Nike"
+                  className="checkbox"
+                  onChange={this.checkTerm}
+                />
                 <h5>Nike</h5>
               </div>
               <div className="row">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value="Adidas"
+                  className="checkbox"
+                  onChange={this.checkTerm}
+                />
                 <h5>Adidas</h5>
               </div>
               <div className="row">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  value="Apple"
+                  className="checkbox"
+                  onChange={this.checkTerm}
+                />
                 <h5>Apple</h5>
               </div>
             </div>
@@ -82,41 +179,71 @@ class SearchPage extends Component {
             <div className="list">
               <div className="row color-row">
                 <div className="color">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value="Black"
+                    className="checkbox"
+                    onChange={this.checkTerm}
+                  />
                   <h5>Black</h5>
                 </div>
                 <div className="color">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value="orange"
+                    className="checkbox"
+                    onChange={this.checkTerm}
+                  />
                   <h5>Orange</h5>
                 </div>
               </div>
               <div className="row color-row">
                 <div className="color">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value="White"
+                    className="checkbox"
+                    onChange={this.checkTerm}
+                  />
                   <h5>White</h5>
                 </div>
                 <div className="color">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value="Green"
+                    className="checkbox"
+                    onChange={this.checkTerm}
+                  />
                   <h5>Green</h5>
                 </div>
               </div>
               <div className="row color-row">
                 <div className="color">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value="Purple"
+                    className="checkbox"
+                    onChange={this.checkTerm}
+                  />
                   <h5>Purple</h5>
                 </div>
                 <div className="color">
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    value="Blue"
+                    className="checkbox"
+                    onChange={this.checkTerm}
+                  />
                   <h5>Blue</h5>
                 </div>
               </div>
             </div>
             <hr />
-            <a href="" onClick={console.log("reset")}>
-              Reset All
-            </a>
+            <Link href="" onClick={console.log("reset")}>
+              Reset all
+            </Link>
           </div>
-          <ProductList results={results} />
+          <ProductList results={filteredResults} />
         </div>
       </div>
     );

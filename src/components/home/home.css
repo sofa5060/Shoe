@@ -187,9 +187,19 @@ nav .middle .cart {
   display: flex;
 }
 
+nav .middle .cart a {
+  color: #36e3d9;
+}
+
 nav .middle .cart:hover {
-  color: #fff;
+  color: #fff !important;
   background: #36e3d9;
+}
+
+nav .middle .cart:hover h4 {
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+  color: #fff;
 }
 
 nav .middle img {

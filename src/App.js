@@ -5,6 +5,7 @@ import SignUp from "./components/auth/SignUp";
 import SignIn from "./components/auth/SignIn";
 import SearchPage from "./components/products/SearchPage"
 import ProductDetails from "./components/products/ProductDetails"
+import Cart from "./components/layout/Cart"
 
 
 class App extends Component {
@@ -17,6 +18,7 @@ class App extends Component {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/search/:result" component={SearchPage} />
           <Route exact path="/products/:id" component={ProductDetails} />
+          <Route exact path="/cart" component={Cart} />
         </Switch>
       </BrowserRouter>
     );

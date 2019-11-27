@@ -174,9 +174,18 @@ nav {
       transition: 0.3s all ease;
       display: flex;
 
+      a{
+        color:$main-color;
+      }
+
       &:hover {
-        color: #fff;
+        color: #fff !important;
         background: $main-color;
+
+        h4{
+          transition: 0.3s all ease;
+          color:#fff;
+        }
       }
     }
 

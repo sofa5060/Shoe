@@ -15,6 +15,9 @@
   background: #ffffff;
   -webkit-box-shadow: 0px 2px 6px rgba(69, 73, 91, 0.08);
           box-shadow: 0px 2px 6px rgba(69, 73, 91, 0.08);
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: max-content;
 }
 
 .search-page .filter-list h3 {

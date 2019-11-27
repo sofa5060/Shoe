@@ -76,9 +76,11 @@ export default class NavBar extends Component {
               <input type="text" id="search" onChange={this.handleChange} />
               <input type="submit" value="SEARCH" />
             </form>
-            <div className="cart hide">
-              <h4>MY CART</h4>
-            </div>
+            <Link to="/cart">
+              <div className="cart hide">
+                <h4>MY CART</h4>
+              </div>
+            </Link>
             <img src={Vector} className="tablet" alt="" />
           </div>
           <form className="search-2 tablet" onSubmit={this.handleSubmit}>
