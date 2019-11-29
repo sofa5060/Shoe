@@ -38,7 +38,6 @@ export default class NavBar extends Component {
     const db = firebase.firestore();
     if (firebase.auth().currentUser !== null) {
       const uid = firebase.auth().currentUser.uid;
-      console.log(uid);
       db.collection("users")
         .doc(uid)
         .onSnapshot(

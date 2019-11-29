@@ -9,7 +9,7 @@ import "./Product.css";
 class SearchPage extends Component {
   state = {
     results: [],
-    terms:[],
+    terms: [],
     filteredResults: []
   };
 
@@ -51,7 +51,9 @@ class SearchPage extends Component {
       {
         terms: checkedValue
       },
-      () => {this.getDataWithFilters()}
+      () => {
+        this.getDataWithFilters();
+      }
     );
   };
 
@@ -62,12 +64,16 @@ class SearchPage extends Component {
       for (let i = 0; i < results.length; i++) {
         let result = results[i];
         for (let l = 0; l < terms.length; l++) {
-          console.log("here")
+          console.log("here");
           let term = terms[l];
-          if (result[0]["type"] === term || result[0]["brand"] === term || result[0]["color"] === term) {
-            if(filteredResults.includes(result)){
-              return
-            }else{
+          if (
+            result[0]["type"] === term ||
+            result[0]["brand"] === term ||
+            result[0]["color"] === term
+          ) {
+            if (filteredResults.includes(result)) {
+              return;
+            } else {
               filteredResults.push(result);
             }
           }
@@ -97,8 +103,24 @@ class SearchPage extends Component {
     }
   };
 
+  handleReset = () => {
+    let inputElements = document.getElementsByClassName("checkbox");
+    for (var i = 0; inputElements[i]; ++i) {
+      if (inputElements[i].checked) {
+        inputElements[i].checked = false;
+      }
+    }
+    this.setState({
+      terms: []
+    },()=>{
+      this.getDataWithFilters()
+    });
+  };
+
   render() {
     const { filteredResults } = this.state;
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div>
         <NavBar submit={search => this.handleSubmit(search)} />
@@ -239,7 +261,7 @@ class SearchPage extends Component {
               </div>
             </div>
             <hr />
-            <Link href="" onClick={console.log("reset")}>
+            <Link href="" onClick={this.handleReset}>
               Reset all
             </Link>
           </div>
@@ -257,15 +279,13 @@ const mapStateToProps = (state, ownProps) => {
     return str.charAt(0).toUpperCase() + string.slice(1);
   };
   const search = capitalizeFirstLetter(ownProps.match.params.result);
+  const auth = state.firebase.auth ? state.firebase.auth : null;
 
   // mapping the search to the props
   return {
-    search
+    search,
+    auth
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchPage);
+export default connect(mapStateToProps, null)(SearchPage);

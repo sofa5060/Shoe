@@ -69,6 +69,8 @@ class Cart extends Component {
 
   render() {
     const { ids } = this.state;
+    const {auth} = this.props
+    if (!auth.uid) return <Redirect to="/signin" />;
     if (this.state.ids.length) {
       return (
         <div>
@@ -124,7 +126,11 @@ class Cart extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return {};
+  const auth = state.firebase.auth ? state.firebase.auth : null;
+  // mapping user auth to props
+  return {
+    auth
+  };
 };
 
 const mapDispatchToProps = dispatch => {
