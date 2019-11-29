@@ -17,7 +17,6 @@ export default function MenuListComposition(props) {
   };
 
   const handleClose = event => {
-    firebase.auth().signOut()
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
@@ -30,6 +29,10 @@ export default function MenuListComposition(props) {
       event.preventDefault();
       setOpen(false);
     }
+  }
+
+  const handleSignout = () =>{
+    firebase.auth().signOut()
   }
 
   // return focus to the button when we transitioned from !open -> open
@@ -75,7 +78,7 @@ export default function MenuListComposition(props) {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Log Out</MenuItem>
+                    <MenuItem onClick={handleClose && handleSignout}>Log Out</MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
