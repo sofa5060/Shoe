@@ -36,8 +36,16 @@ $main-color: #36e3d9;
 body {
   background: $bg-color;
 
+  input[type=submit]{
+    cursor: pointer;
+  }
+
   input:focus {
     outline-width: 0;
+  }
+
+  button{
+    padding: 0 !important;
   }
 }
 
@@ -115,6 +123,8 @@ nav {
 
       h5 {
         padding: 0 20px;
+        font-weight: 500;
+        font-size: 14px;
       }
     }
   }

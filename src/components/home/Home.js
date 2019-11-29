@@ -15,20 +15,33 @@ import fast from "../img/Fast.png";
 import shield from "../img/Shield.png";
 import medal from "../img/Medal.png";
 import "./home.css";
-import Footer from "../layout/Footer"
-import NavBar from "../layout/NavBar"
+import Footer from "../layout/Footer";
+import NavBar from "../layout/NavBar";
+import { Redirect, Link } from "react-router-dom";
+import firebase from "firebase";
+import { connect } from "react-redux";
 
-export default class Home extends Component { 
+class Home extends Component {
+  state = {
+    uid: ""
+  };
+  
 
   // making a search based on the input given by the navbar
   handleSubmit = search => {
-    this.props.history.push("/search/"+ search)
-  }
+    this.props.history.push("/search/" + search);
+  };
+
   render() {
+    const { auth } = this.props;
+    if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div>
         {/* adding submit method to the navbar to be able to make search from navbar */}
-        <NavBar submit={search => this.handleSubmit(search)}/>
+        <NavBar
+          submit={search => this.handleSubmit(search)}
+          signedOut={this.signedOut}
+        />
         <div className="hero-section">
           <div className="row">
             <div className="card card-1">
@@ -184,3 +197,21 @@ export default class Home extends Component {
     );
   }
 }
+
+// mapping state and dispatch to props
+const mapStateToProps = state => {
+  const auth = state.firebase.auth ? state.firebase.auth : null;
+  // mapping user auth to props
+  return {
+    auth
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  // mapping sign in method to props and dispatching it
+  return {
+    
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

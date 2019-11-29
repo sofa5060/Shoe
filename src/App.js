@@ -6,6 +6,7 @@ import SignIn from "./components/auth/SignIn";
 import SearchPage from "./components/products/SearchPage"
 import ProductDetails from "./components/products/ProductDetails"
 import Cart from "./components/layout/Cart"
+import Sorry from "./components/layout/Sorry"
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
           <Route exact path="/search/:result" component={SearchPage} />
           <Route exact path="/products/:id" component={ProductDetails} />
           <Route exact path="/cart" component={Cart} />
+          <Route exact path="/sorry" component={Sorry} />
         </Switch>
       </BrowserRouter>
     );

@@ -16,8 +16,16 @@ body {
   background: #f9f9f9;
 }
 
+body input[type=submit] {
+  cursor: pointer;
+}
+
 body input:focus {
   outline-width: 0;
+}
+
+body button {
+  padding: 0 !important;
 }
 
 a {
@@ -109,6 +117,8 @@ nav .up .right {
 
 nav .up .right h5 {
   padding: 0 20px;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 nav .middle {

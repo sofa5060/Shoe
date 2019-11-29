@@ -24,7 +24,7 @@ class SearchPage extends Component {
       .onSnapshot(snapshot => {
         snapshot.forEach(doc => {
           if (doc) {
-            const result = [doc.data(), doc.id];
+            const result = [doc.data()];
             results.push(result);
           }
         });
@@ -86,7 +86,7 @@ class SearchPage extends Component {
         .onSnapshot(snapshot => {
           snapshot.forEach(doc => {
             if (doc) {
-              const result = [doc.data(), doc.id];
+              const result = [doc.data()];
               results.push(result);
             }
           });

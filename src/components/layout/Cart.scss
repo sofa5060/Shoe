@@ -1,4 +1,4 @@
-.cart-page{
+.cart-page {
   display: flex;
   max-width: 1200px;
   margin: 100px auto;
@@ -8,24 +8,28 @@
     width: 100%;
     flex: 3;
 
-    .row-2{
-        display: flex;
-        padding: 0 0 50px 190px;
-        
-        h4{
-            padding: 0 95px 0 0;
-        }
+    .row-2 {
+      display: flex;
+      justify-content: space-between;
+      padding: 0 0 50px 0;
 
+      h4 {
+        text-align: center;
+        flex: 1;
+      }
     }
     .row {
       display: flex;
       justify-content: space-between;
       padding: 0 0 100px 0;
       align-items: center;
+      text-align: center;
 
-      img {
+      .img {
         flex: 1;
-        display: block;
+        img {
+          width: 100%;
+        }
       }
 
       .MuiFormControl-root {
@@ -43,11 +47,15 @@
 
       h5 {
         flex: 1;
-        padding: 0 50px;
         font-size: 18px;
         line-height: 20px;
         color: #000000;
         font-weight: normal;
+      }
+
+      svg {
+        flex: 1;
+        cursor: pointer;
       }
     }
   }
@@ -61,7 +69,7 @@
     flex-direction: column;
     flex: 1;
     justify-content: start;
-    padding: 200px 0 0 0;
+    padding: 150px 0 0 0;
 
     input {
       background: #ffffff;
@@ -72,8 +80,8 @@
       width: 100%;
       margin: 0 0 30px 0;
 
-      &[type=submit]{
-        background: #36E3D9;
+      &[type="submit"] {
+        background: #36e3d9;
         color: #fff;
       }
     }
@@ -94,16 +102,42 @@
       padding: 0 0 5px 0;
     }
 
-    .row{
-        display: flex;
+    .row {
+      display: flex;
 
-        .box{
-            flex:1;
+      .box {
+        flex: 1;
 
-            &:nth-child(1){
-                margin: 0 15px 0 0;
-            }
+        &:nth-child(1) {
+          margin: 0 15px 0 0;
         }
+      }
     }
+  }
+}
+
+.message {
+  padding: 200px 100px;
+  text-align: center;
+  img {
+    display: block;
+    max-width: 120px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    padding: 40px 0;
+    font-weight: normal;
+    font-size: 22px;
+    line-height: 27px;
+    color: #464855;
+  }
+
+  h3 {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #898ea2;
   }
 }

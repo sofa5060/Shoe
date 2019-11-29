@@ -3,7 +3,9 @@ import shoe2 from "../img/shoe2.png";
 import firebase from "firebase";
 import TextField from "@material-ui/core/TextField";
 import CloseIcon from "@material-ui/icons/Close";
-export default class CartProduct extends Component {
+import { connect } from "react-redux";
+import {deleteItem} from "../store/actions/productActions"
+class CartProduct extends Component {
   state = {
     result: [],
     quantity: 1
@@ -12,7 +14,6 @@ export default class CartProduct extends Component {
   componentWillMount = () => {
     const db = firebase.firestore();
     const { id } = this.props;
-    console.log(id);
     db.collection("products")
       .doc(id)
       .onSnapshot(
@@ -43,22 +44,39 @@ export default class CartProduct extends Component {
       });
     }
   };
+
+  deleteItem = () => {
+    this.props.deleteItem(this.state.result.id)
+    this.props.getData()
+  }
   render() {
     const { result, quantity } = this.state;
     return (
       <div className="product row">
-        <img src={shoe2} alt="" />
+        <div className="img">
+          <img src={shoe2} alt="" />
+        </div>
         <h4>{result.name}</h4>
         <h5>{result.size}</h5>
         <TextField
           id="standard-number"
           label="Quantity"
           type="number"
+          defaultValue="1"
           onChange={this.handleChange}
         />
         <h5>{"$" + result.price * quantity}</h5>
-        <CloseIcon />
+        <CloseIcon onClick={this.deleteItem}/>
       </div>
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  // mapping delete from cart method to props and dispatching it
+  return {
+    deleteItem: id => dispatch(deleteItem(id))
+  };
+};
+
+export default connect(null, mapDispatchToProps)(CartProduct);

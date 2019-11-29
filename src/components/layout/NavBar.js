@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import Vector from "../img/Vector-2.png";
 import { Link } from "react-router-dom";
+import DropDownMenu from "./DropDownMenu";
+import firebase from "firebase";
 
 export default class NavBar extends Component {
   state = {
-    search: ""
+    search: "",
+    fullName:""
   };
 
   // functions for the side-navbar
@@ -26,6 +29,30 @@ export default class NavBar extends Component {
   // giving the input to the homepage to make the search
   handleSubmit = () => {
     this.props.submit(this.state.search);
+    this.setState({
+      search: ""
+    });
+  };
+
+  componentWillMount = () => {
+    const db = firebase.firestore();
+    if (firebase.auth().currentUser !== null) {
+      const uid = firebase.auth().currentUser.uid;
+      console.log(uid);
+      db.collection("users")
+        .doc(uid)
+        .onSnapshot(
+          {
+            // Listen for document metadata changes
+            includeMetadataChanges: true
+          },
+          doc => {
+            this.setState({
+              fullName:doc.data().fullName
+            })
+          }
+        );
+    }
   };
 
   render() {
@@ -38,7 +65,7 @@ export default class NavBar extends Component {
           </div>
           <div className="right">
             <h5>
-              <a href="">Track your order</a>
+              <DropDownMenu name={this.state.fullName}/>
             </h5>
             <h5>
               <a href="">$ Dollar (US)</a>
@@ -81,7 +108,9 @@ export default class NavBar extends Component {
                 <h4>MY CART</h4>
               </div>
             </Link>
-            <img src={Vector} className="tablet" alt="" />
+            <Link to="/cart">
+              <img src={Vector} className="tablet" alt="" />
+            </Link>
           </div>
           <form className="search-2 tablet" onSubmit={this.handleSubmit}>
             <input type="text" id="search" onChange={this.handleChange} />

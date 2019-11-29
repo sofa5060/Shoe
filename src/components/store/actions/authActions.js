@@ -14,7 +14,11 @@ export const signUp = (user) => {
           uid:resp.user.uid,
           cart:[]
           });
-    })
+    }).then(() => {
+      dispatch({ type: 'SIGNUP_SUCCESS' });
+    }).catch((err) => {
+      dispatch({ type: 'SIGNUP_ERROR', err });
+    });
   }
 }
 
@@ -25,9 +29,10 @@ export const signIn = (credentials) => {
     firebase.auth().signInWithEmailAndPassword(
       credentials.email,
       credentials.password
-    ).catch((err) => {
-      console.log(err)
+    ).then(() => {
+      dispatch({ type: 'LOGIN_SUCCESS' });
+    }).catch((err) => {
+      dispatch({ type: 'LOGIN_ERROR', err });
     });
-
   }
 }

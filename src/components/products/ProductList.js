@@ -10,7 +10,7 @@ class ProductList extends Component {
       <div className="products-list">
         {results.map(result => {
           return (
-            <Link to={"/products/" + result[1]} key={result[1]}>
+            <Link to={"/products/" + result[0].id} key={result[0].id}>
               <ProductSummary result={result[0]}/>
             </Link>
           );

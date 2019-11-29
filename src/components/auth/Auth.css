@@ -118,6 +118,10 @@
   color: #36e3d9;
 }
 
+.form p {
+  color: red;
+}
+
 .form .terms {
   display: -webkit-box;
   display: -ms-flexbox;

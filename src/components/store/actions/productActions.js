@@ -1,7 +1,6 @@
-import { getFirestore } from "redux-firestore";
 
 export const addToCart = id => {
-  return (dispatch, getState, { getFirebase }) => {
+  return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore();
     const state = getState();
     const auth = state.firebase.auth;
@@ -16,5 +15,22 @@ export const addToCart = id => {
         })
       }
     }
+  };
+}
+;
+export const deleteItem = id => {
+  return (dispatch, getState, { getFirebase,getFirestore }) => {
+    const firestore = getFirestore();
+    const state = getState();
+    const auth = state.firebase.auth;
+    var cart = state.firebase.profile.cart
+    let index = cart.indexOf(id);
+      if (index > -1) {
+        cart.splice(index, 1);
+      }
+    console.log(cart)
+    firestore.collection("users").doc(auth.uid).update({
+      cart
+    })
   };
 };

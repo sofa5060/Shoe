@@ -25,7 +25,7 @@ class SignIn extends Component {
 
   render() {
     // getting auth from props and redirect him homepage if he signed in
-    const { auth } = this.props;
+    const { auth,authError } = this.props;
     if (auth.uid) return <Redirect to="/" />;
     return (
       <div className="form">
@@ -50,6 +50,7 @@ class SignIn extends Component {
               onChange={this.handleChange}
             />
           </div>
+          { authError ? <p>{authError}</p> : null }
           <h5>By singing up you’re acepting our terms & conditions</h5>
           <input type="submit" value="Sign in" />
           <div className="or">
@@ -58,7 +59,7 @@ class SignIn extends Component {
             <hr className="bar" />
           </div>
           <h6>
-            Not a Member Yet ? <Link to="../signUp">Sign in</Link>
+            Not a Member Yet ? <Link to="../signUp">Sign up</Link>
           </h6>
         </form>
         <div className="terms">
@@ -76,8 +77,10 @@ class SignIn extends Component {
 const mapStateToProps = state => {
   const auth = state.firebase.auth ? state.firebase.auth : null;
   // mapping user auth to props
+  console.log(state)
   return {
-    auth
+    auth,
+    authError: state.auth.authError
   };
 };
 

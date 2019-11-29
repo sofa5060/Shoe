@@ -38,11 +38,15 @@ class ProductDetails extends Component {
     this.props.addToCart(this.props.match.params.id)
   };
 
+  handleSearch = search => {
+    this.props.history.push("/search/"+ search)
+  }
+
   render() {
     const { result } = this.state;
     return (
       <div>
-        <NavBar />
+        <NavBar submit={search => this.handleSearch(search)}/>
         <div className="product">
           <div className="product-detail">
             <h1>{result.name}</h1>
