@@ -52,21 +52,23 @@ class CartProduct extends Component {
   render() {
     const { result, quantity } = this.state;
     return (
-      <div className="product row">
+      <div className="row">
         <div className="img">
           <img src={shoe2} alt="" />
         </div>
-        <h4>{result.name}</h4>
-        <h5>{result.size}</h5>
-        <TextField
-          id="standard-number"
-          label="Quantity"
-          type="number"
-          defaultValue="1"
-          onChange={this.handleChange}
-        />
-        <h5>{"$" + result.price * quantity}</h5>
-        <CloseIcon onClick={this.deleteItem}/>
+        <div className="right">
+          <h4>{result.name}</h4>
+          <h6>{result.size}</h6>
+          <TextField
+            id="standard-number"
+            label="Quantity"
+            type="number"
+            defaultValue="1"
+            onChange={this.handleChange}
+          />
+          <h5>{"$" + result.price * quantity}</h5>
+          <CloseIcon onClick={this.deleteItem}/>
+        </div>
       </div>
     );
   }

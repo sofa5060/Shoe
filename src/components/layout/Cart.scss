@@ -1,9 +1,25 @@
+@mixin tablet {
+  @media (max-width: 814px) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: 500px) {
+    @content;
+  }
+}
+
 .cart-page {
   display: flex;
   max-width: 1200px;
   margin: 100px auto;
   padding: 50px;
   background: #fff;
+  @include phone {
+    background: unset;
+    flex-direction: column;
+  }
   .cart-list {
     width: 100%;
     flex: 3;
@@ -12,6 +28,10 @@
       display: flex;
       justify-content: space-between;
       padding: 0 0 50px 0;
+
+      @include phone {
+        display: none;
+      }
 
       h4 {
         text-align: center;
@@ -25,6 +45,13 @@
       align-items: center;
       text-align: center;
 
+      @include phone {
+        position: relative;
+        padding: 50px 0;
+        background: #fff;
+        margin: 0 0 50px 0;
+      }
+
       .img {
         flex: 1;
         img {
@@ -34,6 +61,11 @@
 
       .MuiFormControl-root {
         flex: 1;
+
+        @include phone {
+          max-width: 100px;
+          margin: 20px auto;
+        }
       }
 
       h4 {
@@ -53,15 +85,63 @@
         font-weight: normal;
       }
 
+      h6 {
+        flex: 1;
+        font-size: 18px;
+        line-height: 20px;
+        color: #000000;
+        font-weight: normal;
+
+        @include phone {
+          display: none;
+        }
+      }
+
       svg {
         flex: 1;
         cursor: pointer;
+
+        @include phone {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+        }
+      }
+
+      .right {
+        flex: 5;
+        display: flex;
+
+        @include phone {
+          flex-direction: column;
+          flex: 1;
+        }
       }
     }
   }
 
   hr {
     margin: 150px 50px 50px 50px;
+
+    @include tablet {
+      display: none;
+    }
+  }
+
+  a {
+    display: none;
+
+    @include phone {
+      display: block;
+      text-align: center;
+      min-width: 250px;
+      margin: 0 auto;
+      border-radius: 0px 2px 2px 0px;
+      padding: 15px 0;
+      color: #fff;
+      background: #36E3D9;
+      margin: 50px 0 0 0;
+    }
   }
 
   .check-out {
@@ -70,6 +150,10 @@
     flex: 1;
     justify-content: start;
     padding: 150px 0 0 0;
+
+    @include tablet {
+      display: none;
+    }
 
     input {
       background: #ffffff;

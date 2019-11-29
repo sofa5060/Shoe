@@ -88,6 +88,7 @@ class Cart extends Component {
               })}
             </div>
             <hr />
+            <Link to="/sorry">Check Out</Link>
             <form className="check-out" onSubmit={this.handleSubmit}>
               <h1>Credit card details</h1>
               <h2>Card holder’s name</h2>
