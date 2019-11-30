@@ -17,8 +17,7 @@ class SearchPage extends Component {
     const db = firebase.firestore();
     const search = this.props.search;
     let results = [];
-    console.log(search);
-    db.collection("products")
+    db.collection("products").limit(10)
       .orderBy("name")
       .startAt(search)
       .onSnapshot(snapshot => {
@@ -119,8 +118,6 @@ class SearchPage extends Component {
 
   render() {
     const { filteredResults } = this.state;
-    const { auth } = this.props;
-    if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div>
         <NavBar submit={search => this.handleSubmit(search)} />
@@ -164,6 +161,15 @@ class SearchPage extends Component {
                 />
                 <h5>Running</h5>
               </div>
+              <div className="row">
+                <input
+                  type="checkbox"
+                  value="Deals"
+                  className="checkbox"
+                  onChange={this.checkTerm}
+                />
+                <h5>Deals</h5>
+              </div>
             </div>
             <hr />
             <h3>Brand</h3>
@@ -189,11 +195,11 @@ class SearchPage extends Component {
               <div className="row">
                 <input
                   type="checkbox"
-                  value="Apple"
+                  value="Puma"
                   className="checkbox"
                   onChange={this.checkTerm}
                 />
-                <h5>Apple</h5>
+                <h5>Puma</h5>
               </div>
             </div>
             <hr />

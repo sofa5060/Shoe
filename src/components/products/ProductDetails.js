@@ -35,7 +35,13 @@ class ProductDetails extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.addToCart(this.props.match.params.id)
+    const {auth} = this.props
+    if(auth.uid){
+
+      this.props.addToCart(this.props.match.params.id)
+    }else{
+      this.props.history.push("/signin")
+    }
   };
 
   handleSearch = search => {
@@ -57,7 +63,7 @@ class ProductDetails extends Component {
             </a>
           </div>
           <div className="product-image">
-              <img src={shoe2} alt=""/>
+              <img src={result.photoURL} alt=""/>
           </div>
         </div>
       </div>

@@ -17,11 +17,9 @@ import medal from "../img/Medal.png";
 import "./home.css";
 import Footer from "../layout/Footer";
 import NavBar from "../layout/NavBar";
-import { Redirect, Link } from "react-router-dom";
-import firebase from "firebase";
-import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-class Home extends Component {
+export default class Home extends Component {
   state = {
     uid: ""
   };
@@ -33,8 +31,6 @@ class Home extends Component {
   };
 
   render() {
-    const { auth } = this.props;
-    if (!auth.uid) return <Redirect to="/signin" />;
     return (
       <div>
         {/* adding submit method to the navbar to be able to make search from navbar */}
@@ -44,37 +40,37 @@ class Home extends Component {
         />
         <div className="hero-section">
           <div className="row">
-            <div className="card card-1">
-              <img src={imageOne} className="hide" alt="" />
-              <img src={imageFive} className="tablet" alt="" />
+            <div className="card card-1 wow fadeIn">
+              <img src={imageOne} className="hide" />
+              <img src={imageFive} className="tablet" />
               <div className="text">
                 <h6>Winter 2020</h6>
                 <h2>New Start</h2>
-                <a href="#">SHOP NOW</a>
+                <Link to="/search/all" href="#">SHOP NOW</Link>
               </div>
             </div>
           </div>
           <div className="row">
-            <div className="row-1">
-              <div className="card card-2">
+            <div className="row-1 ">
+              <div className="card card-2 wow fadeIn delay-1">
                 <img src={imageTwo} className="hide" alt="" />
                 <img src={imageSix} className="tablet" alt="" />
                 <div className="text">
                   <h2>Hot Deals</h2>
-                  <a href="#">SHOP NOW</a>
+                  <Link to="/search/all" href="#">SHOP NOW</Link>
                 </div>
               </div>
-              <div className="card card-3">
+              <div className="card card-3 wow fadeIn delay-2">
                 <img src={imageThree} className="hide" alt="" />
                 <img src={imageSeven} className="tablet" alt="" />
                 <div className="text">
                   <h2>Casual Sneakers</h2>
-                  <a href="#">SHOP NOW</a>
+                  <Link to="/search/all" href="#">SHOP NOW</Link>
                 </div>
               </div>
             </div>
             <div className="row-2">
-              <div className="card card-4">
+              <div className="card card-4 wow fadeIn delay-3">
                 <img src={imageFour} alt="" />
                 <div className="text">
                   <h2>Get 25% Off One Item + Free Delivery</h2>
@@ -86,7 +82,7 @@ class Home extends Component {
         <div className="section-2">
           <div className="bar">
             <h3>POPULAR TODAY</h3>
-            <a href="">SEE ALL</a>
+            <Link to="/search/all" href="#">SEE ALL</Link>
           </div>
           <div className="row">
             <div className="box">
@@ -197,21 +193,3 @@ class Home extends Component {
     );
   }
 }
-
-// mapping state and dispatch to props
-const mapStateToProps = state => {
-  const auth = state.firebase.auth ? state.firebase.auth : null;
-  // mapping user auth to props
-  return {
-    auth
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  // mapping sign in method to props and dispatching it
-  return {
-    
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Home);

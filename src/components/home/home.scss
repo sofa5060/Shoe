@@ -25,6 +25,19 @@ $main-color: #36e3d9;
   }
 }
 
+/* animaqtion delays */
+.delay-1 {
+  animation-delay: 0.5s;
+}
+
+.delay-2 {
+  animation-delay: 0.9s;
+}
+
+.delay-3 {
+  animation-delay: 1.3s;
+}
+
 /* General */
 * {
   padding: 0;
@@ -36,7 +49,7 @@ $main-color: #36e3d9;
 body {
   background: $bg-color;
 
-  input[type=submit]{
+  input[type="submit"] {
     cursor: pointer;
   }
 
@@ -44,7 +57,7 @@ body {
     outline-width: 0;
   }
 
-  button{
+  button {
     padding: 0 !important;
   }
 }
@@ -63,27 +76,27 @@ li {
   list-style: none;
 }
 
-// Showing things on mobile only 
-.phone{
+// Showing things on mobile only
+.phone {
   display: none;
 
-  @include phone{
+  @include phone {
     display: block;
   }
 }
 
 // Showing thins on tablet only
-.tablet{
+.tablet {
   display: none !important;
 
-  @include tablet{
+  @include tablet {
     display: flex !important;
   }
 }
 
 // Hiding things from desktop
-.hide{
-  @include tablet{
+.hide {
+  @include tablet {
     display: none !important;
   }
 }
@@ -102,7 +115,7 @@ nav {
     justify-content: space-between;
     padding: 15px;
 
-    @include tablet{
+    @include tablet {
       display: none;
     }
 
@@ -145,7 +158,7 @@ nav {
       align-self: center;
       color: #6b6f81;
 
-      @include tablet{
+      @include tablet {
         font-size: 19px;
       }
     }
@@ -184,22 +197,22 @@ nav {
       transition: 0.3s all ease;
       display: flex;
 
-      a{
-        color:$main-color;
+      a {
+        color: $main-color;
       }
 
       &:hover {
         color: #fff !important;
         background: $main-color;
 
-        h4{
+        h4 {
           transition: 0.3s all ease;
-          color:#fff;
+          color: #fff;
         }
       }
     }
 
-    img{
+    img {
       width: 20px;
       height: 20px;
       align-self: center;
@@ -239,7 +252,7 @@ nav {
 
     .hamburger {
       display: none;
-      
+
       @include tablet {
         display: block;
         cursor: pointer;
@@ -256,7 +269,7 @@ nav {
     width: 100%;
     align-items: center;
     justify-content: center;
-    padding: 0 25px;
+    padding: 0 25px 25px 25px;
 
     input[type="text"] {
       max-width: 380px;
@@ -293,7 +306,6 @@ nav {
     li {
       padding: 25px 50px;
     }
-
   }
 }
 
@@ -307,12 +319,12 @@ nav {
 
   .row {
     display: flex;
-    
-    @include tablet{
+
+    @include tablet {
       flex-direction: column;
     }
 
-    .row-1{
+    .row-1 {
       display: flex;
     }
 
@@ -344,11 +356,11 @@ nav {
         border: 1px solid #36e3d9;
         color: #36e3d9;
 
-        @include tablet{
+        @include tablet {
           padding: 15px;
         }
 
-        @include phone{
+        @include phone {
           font-size: 11px;
           padding: 10px 5px;
         }
@@ -365,7 +377,7 @@ nav {
           font-size: 64px;
           margin: 0 0 40px 0;
 
-          @include phone{
+          @include phone {
             font-size: 36px;
           }
         }
@@ -377,7 +389,7 @@ nav {
           font-size: 36px;
           margin: 0 0 40px 0;
 
-          @include phone{
+          @include phone {
             font-weight: 500;
             font-size: 18px;
           }
@@ -390,7 +402,7 @@ nav {
           font-size: 36px;
           margin: 0 0 40px 0;
 
-          @include phone{
+          @include phone {
             font-weight: 500;
             font-size: 18px;
           }
@@ -408,17 +420,17 @@ nav {
           padding: 60px 20px;
           background-size: cover;
 
-          @include desktop{
+          @include desktop {
             padding: 20px;
           }
 
-          @include tablet{
+          @include tablet {
             font-weight: bold;
             font-size: 25px;
             padding: 160px 100px;
           }
 
-          @include phone{
+          @include phone {
             font-size: 18px;
             padding: 20% 10%;
           }
@@ -477,7 +489,7 @@ nav {
           font-size: 16px;
           color: #464855;
 
-          @include phone{
+          @include phone {
             font-size: 12px;
           }
         }
@@ -543,10 +555,10 @@ nav {
           border-radius: 6px;
           font-weight: normal;
           font-size: 12px;
-          text-align:center;
+          text-align: center;
         }
 
-        @include phone{
+        @include phone {
           display: none;
         }
       }
@@ -563,7 +575,7 @@ nav {
         }
       }
 
-      @include tablet{
+      @include tablet {
         flex-direction: column;
         align-items: center;
       }
@@ -571,121 +583,121 @@ nav {
   }
 }
 
-.section-3{
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
-    text-align: center;
-    padding: 100px 0;
-    background: #fff;
+.section-3 {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  padding: 100px 0;
+  background: #fff;
 
-    h1{
+  h1 {
+    font-weight: normal;
+    font-size: 26px;
+    color: #464855;
+  }
+
+  .boxes {
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 50px;
+
+    .box {
+      flex: 1;
+      padding: 0 30px;
+
+      @include phone {
+        padding: 50px 0;
+      }
+
+      h2 {
         font-weight: normal;
-        font-size: 26px;
+        font-size: 18px;
         color: #464855;
+        padding: 17px 0 10px 0;
+      }
+
+      h3 {
+        font-weight: normal;
+        font-size: 16px;
+        color: #898ea2;
+      }
     }
 
-    .boxes{
-        display: flex;
-        justify-content: space-between;
-        padding: 80px 50px;
-
-        .box{
-            flex: 1;
-            padding: 0 30px;
-
-            @include phone{
-              padding: 50px 0;
-            }
-
-            h2{
-                font-weight: normal;
-                font-size: 18px;
-                color: #464855;
-                padding: 17px 0 10px 0;
-            }
-
-            h3{
-                font-weight: normal;
-                font-size: 16px;
-                color: #898EA2;
-            }
-        }
-
-        @include phone{
-          flex-direction: column;
-        }
+    @include phone {
+      flex-direction: column;
     }
+  }
 }
 
-.footer{
+.footer {
   background: #353745;
 
-  footer{
+  footer {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     padding: 50px;
     display: flex;
     flex-direction: column;
-    color: #A5A8BB;
+    color: #a5a8bb;
 
-    a{
-      color: #7F829A;
+    a {
+      color: #7f829a;
     }
 
-    h1{
+    h1 {
       color: #fff;
     }
 
-    .row{
+    .row {
       display: flex;
       justify-content: space-between;
       padding: 50px 0;
 
-      @include tablet{
+      @include tablet {
         flex-direction: column;
         padding: 50px 0 0 0;
       }
 
-      .col{
+      .col {
         flex: 1;
-        h4{
+        h4 {
           margin: 0 0 20px 0;
 
-          @include tablet{
+          @include tablet {
             margin: 20px 0;
           }
         }
 
-        li{
+        li {
           margin: 0 0 10px 0;
-          color: #7F829A;
+          color: #7f829a;
           line-height: 34px;
         }
 
-        .links{
+        .links {
           display: flex;
 
-          .link{
+          .link {
             padding: 15px 20px;
             margin: 20px 20px 0 0;
-            background: #3A3C4C;
+            background: #3a3c4c;
 
-            @include phone{
+            @include phone {
               margin: 20px 10px 0 0;
             }
           }
         }
 
-        input{
+        input {
           padding: 15px 20px;
           height: 50px;
           background: url(../img/Arrow.png) no-repeat white 270px;
           border: 0;
           min-width: 300px;
 
-          @include phone{
+          @include phone {
             width: inherit;
             min-width: 220px;
             background-position: 195px;
@@ -694,12 +706,12 @@ nav {
       }
     }
 
-    .row-2{
+    .row-2 {
       @include tablet {
         padding: 0 0 100px 0;
       }
 
-      .col{
+      .col {
         flex: unset;
       }
     }

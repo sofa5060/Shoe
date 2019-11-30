@@ -3,8 +3,9 @@ import Vector from "../img/Vector-2.png";
 import { Link } from "react-router-dom";
 import DropDownMenu from "./DropDownMenu";
 import firebase from "firebase";
+import { connect } from "react-redux";
 
-export default class NavBar extends Component {
+class NavBar extends Component {
   state = {
     search: "",
     fullName:""
@@ -34,6 +35,10 @@ export default class NavBar extends Component {
     });
   };
 
+  handleClick = () => {
+
+  }
+
   componentWillMount = () => {
     const db = firebase.firestore();
     if (firebase.auth().currentUser !== null) {
@@ -55,6 +60,7 @@ export default class NavBar extends Component {
   };
 
   render() {
+    const { auth } = this.props;
     return (
       <nav>
         <div className="up">
@@ -64,7 +70,7 @@ export default class NavBar extends Component {
           </div>
           <div className="right">
             <h5>
-              <DropDownMenu name={this.state.fullName}/>
+              {auth.uid ? <DropDownMenu name={this.state.fullName}/> : null}
             </h5>
             <h5>
               <a href="">$ Dollar (US)</a>
@@ -99,7 +105,7 @@ export default class NavBar extends Component {
               <Link to="/">SHOE.</Link>
             </div>
             <form className="search hide" onSubmit={this.handleSubmit}>
-              <input type="text" id="search" onChange={this.handleChange} />
+              <input type="text" id="search" onChange={this.handleChange} required/>
               <input type="submit" value="SEARCH" />
             </form>
             <Link to="/cart">
@@ -112,28 +118,39 @@ export default class NavBar extends Component {
             </Link>
           </div>
           <form className="search-2 tablet" onSubmit={this.handleSubmit}>
-            <input type="text" id="search" onChange={this.handleChange} />
-            <input type="submit" value="SEARCH" />
+            <input type="text" id="search" onChange={this.handleChange} required/>
+            <input type="submit" value="SEARCH"/>
           </form>
-          <ul className="down hide">
+          {/* <ul className="down hide">
             <li>
-              <a href="">WOMEN</a>
+              <Link to="/search/Women">WOMEN</Link>
             </li>
             <li>
-              <a href="">MEN</a>
+              <Link to="/search/Men">MEN</Link>
             </li>
             <li>
-              <a href="">KIDS</a>
+              <Link to="/search/Kids">KIDS</Link>
             </li>
             <li>
-              <a href="">RUNNING</a>
+              <Link to="/search/Running">RUNNING</Link>
             </li>
             <li>
-              <a href="">DEALS</a>
+              <Link to="/search/Deals">DEALS</Link>
             </li>
-          </ul>
+          </ul> */}
         </div>
       </nav>
     );
   }
 }
+
+// mapping state and dispatch to props
+const mapStateToProps = state => {
+  const auth = state.firebase.auth ? state.firebase.auth : null;
+  // mapping user auth to props
+  return {
+    auth,
+  };
+};
+
+export default connect(mapStateToProps, null)(NavBar);

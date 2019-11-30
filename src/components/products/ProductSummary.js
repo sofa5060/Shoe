@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
-import shoe2 from "../img/shoe2.png";
-import Vector from "../img/Vector-2.png";
 
 class ProductSummary extends Component {
   render() {
@@ -12,7 +9,7 @@ class ProductSummary extends Component {
         {result.type}
       </h5>
       <div className="product-image">
-        <img src={shoe2}/>
+        <img src={result.photoURL} alt="shoe"/>
       </div>
       <h2>{result.name}</h2>
       <h4>Price:</h4>
@@ -27,9 +24,4 @@ const mapStateToProps = (state, ownProps) => {
     result
   };
 };
-
-const mapDispatchToProps = dispatch => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProductSummary);
+export default connect(mapStateToProps, null)(ProductSummary);

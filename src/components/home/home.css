@@ -3,6 +3,22 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap");
 /* Variables */
 /* Mixins */
+/* animaqtion delays */
+.delay-1 {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+.delay-2 {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+
+.delay-3 {
+  -webkit-animation-delay: 1.3s;
+          animation-delay: 1.3s;
+}
+
 /* General */
 * {
   padding: 0;
@@ -16,7 +32,7 @@ body {
   background: #f9f9f9;
 }
 
-body input[type=submit] {
+body input[type="submit"] {
   cursor: pointer;
 }
 
@@ -285,7 +301,7 @@ nav .search-2 {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 0 25px;
+  padding: 0 25px 25px 25px;
 }
 
 nav .search-2 input[type="text"] {
@@ -703,7 +719,7 @@ nav .down li {
 .section-3 .boxes .box h3 {
   font-weight: normal;
   font-size: 16px;
-  color: #898EA2;
+  color: #898ea2;
 }
 
 @media (max-width: 500px) {
@@ -731,11 +747,11 @@ nav .down li {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  color: #A5A8BB;
+  color: #a5a8bb;
 }
 
 .footer footer a {
-  color: #7F829A;
+  color: #7f829a;
 }
 
 .footer footer h1 {
@@ -780,7 +796,7 @@ nav .down li {
 
 .footer footer .row .col li {
   margin: 0 0 10px 0;
-  color: #7F829A;
+  color: #7f829a;
   line-height: 34px;
 }
 
@@ -793,7 +809,7 @@ nav .down li {
 .footer footer .row .col .links .link {
   padding: 15px 20px;
   margin: 20px 20px 0 0;
-  background: #3A3C4C;
+  background: #3a3c4c;
 }
 
 @media (max-width: 500px) {
