@@ -23,7 +23,6 @@ export default class Home extends Component {
   state = {
     uid: ""
   };
-  
 
   // making a search based on the input given by the navbar
   handleSubmit = search => {
@@ -46,7 +45,9 @@ export default class Home extends Component {
               <div className="text">
                 <h6>Winter 2020</h6>
                 <h2>New Start</h2>
-                <Link to="/search/all" href="#">SHOP NOW</Link>
+                <Link to="/search/all" href="#">
+                  SHOP NOW
+                </Link>
               </div>
             </div>
           </div>
@@ -57,7 +58,9 @@ export default class Home extends Component {
                 <img src={imageSix} className="tablet" alt="" />
                 <div className="text">
                   <h2>Hot Deals</h2>
-                  <Link to="/search/all" href="#">SHOP NOW</Link>
+                  <Link to="/search/all" href="#">
+                    SHOP NOW
+                  </Link>
                 </div>
               </div>
               <div className="card card-3 wow fadeIn delay-2">
@@ -65,7 +68,9 @@ export default class Home extends Component {
                 <img src={imageSeven} className="tablet" alt="" />
                 <div className="text">
                   <h2>Casual Sneakers</h2>
-                  <Link to="/search/all" href="#">SHOP NOW</Link>
+                  <Link to="/search/all" href="#">
+                    SHOP NOW
+                  </Link>
                 </div>
               </div>
             </div>
@@ -82,79 +87,98 @@ export default class Home extends Component {
         <div className="section-2">
           <div className="bar">
             <h3>POPULAR TODAY</h3>
-            <Link to="/search/all" href="#">SEE ALL</Link>
+            <Link to="/search/all" href="#">
+              SEE ALL
+            </Link>
           </div>
           <div className="row">
-            <div className="box">
-              <div className="left">
-                <img src={shoe4} alt="" />
-              </div>
-              <div className="middle">
-                <h3>Nike motherfucker nice sneakers for men</h3>
-                <div className="color color-1">
-                  <div></div>
-                  <h5>Blue</h5>
+            <Link to="products/O0FHOdQMshNIzMhQ7vcq">
+              <div className="box">
+                <div className="left">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/shoe-e7e15.appspot.com/o/imgaes%2F1.png?alt=media&token=76455d70-e25e-4bc7-af24-4acb7a94351e"
+                    alt=""
+                  />
                 </div>
-                <h4>$79.99</h4>
-                <h6>$139.99</h6>
-              </div>
-              <div className="right blue">
-                <h4>Best Sale</h4>
-              </div>
-            </div>
-            <div className="box">
-              <div className="left">
-                <img src={shoe2} alt="" />
-              </div>
-              <div className="middle">
-                <h3>Nike motherfucker for strongest mothers</h3>
-                <div className="color color-2">
-                  <div></div>
-                  <h5>Grey</h5>
+                <div className="middle">
+                  <h3>Nike motherfucker nice sneakers for men</h3>
+                  <div className="color color-1">
+                    <div></div>
+                    <h5>Blue</h5>
+                  </div>
+                  <h4>104.99</h4>
+                  <h6>$139.99</h6>
                 </div>
-                <h4>$79.99</h4>
-                <h6>$139.99</h6>
+                <div className="right blue">
+                  <h4>Best Sale</h4>
+                </div>
               </div>
-              <div className="right yellow">
-                <h4>Sale</h4>
+            </Link>
+            <Link to="/products/EVdIyXomlvAgEJrSqL8B">
+              <div className="box">
+                <div className="left">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/shoe-e7e15.appspot.com/o/imgaes%2F3.png?alt=media&token=7447cacd-c689-40e5-a8bb-30356557b2dd"
+                    alt=""
+                  />
+                </div>
+                <div className="middle">
+                  <h3>Revolution Grey for Ladies Trainers</h3>
+                  <div className="color color-2">
+                    <div></div>
+                    <h5>Grey</h5>
+                  </div>
+                  <h4>$35.00</h4>
+                  <h6>$45.00</h6>
+                </div>
+                <div className="right yellow">
+                  <h4>Sale</h4>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
           <div className="row">
-            <div className="box">
-              <div className="left">
-                <img src={shoe3} alt="" />
-              </div>
-              <div className="middle">
-                <h3>Nike motherfucker nice sneakers for both</h3>
-                <div className="color color-1">
-                  <div></div>
-                  <h5>Blue</h5>
+            <Link to="/products/XyzoOFWSKFtHG3pEmKIV">
+              <div className="box">
+                <div className="left">
+                  <img
+                    src="https://firebasestorage.googleapis.com/v0/b/shoe-e7e15.appspot.com/o/imgaes%2F5.png?alt=media&token=e1998bd3-ab16-4c87-8da4-1d6946df974d"
+                    alt=""
+                  />
                 </div>
-                <h4>$79.99</h4>
-                <h6>$139.99</h6>
-              </div>
-              <div className="right">
-                <h4>Out of stock</h4>
-              </div>
-            </div>
-            <div className="box">
-              <div className="left">
-                <img src={shoe4} alt="" />
-              </div>
-              <div className="middle">
-                <h3>Daniel Wellington Women's 0511DW Classic Bristol</h3>
-                <div className="color color-4">
-                  <div></div>
-                  <h5>Red</h5>
+                <div className="middle">
+                  <h3>Star Runner Child Girls Trainers</h3>
+                  <div className="color color-5">
+                    <div></div>
+                    <h5>Black</h5>
+                  </div>
+                  <h4>$37.99</h4>
+                  <h6>$50.00</h6>
                 </div>
-                <h4>$79.99</h4>
-                <h6>$139.99</h6>
+                <div className="right">
+                  <h4>Out of stock</h4>
+                </div>
               </div>
-              <div className="right">
-                <h4>Out of stock</h4>
+            </Link>
+            <Link to="/products/TnDHdH7SR9zISJLcJJKa">
+              <div className="box">
+                <div className="left">
+                  <img src="https://firebasestorage.googleapis.com/v0/b/shoe-e7e15.appspot.com/o/imgaes%2F10.png?alt=media&token=0f6af42c-645f-4437-9231-cfd354b93d0d" alt="" />
+                </div>
+                <div className="middle">
+                  <h3>Daniel Wellington Women's 0511DW Classic Bristol</h3>
+                  <div className="color color-5">
+                    <div></div>
+                    <h5>Red</h5>
+                  </div>
+                  <h4>$30.99</h4>
+                  <h6>$60.00</h6>
+                </div>
+                <div className="right">
+                  <h4>Out of stock</h4>
+                </div>
               </div>
-            </div>
+            </Link>
           </div>
         </div>
         <div className="white-back">

@@ -457,6 +457,12 @@ nav {
 
   .row {
     display: flex;
+    min-width: 100%;
+
+    a{
+      flex-direction: column;
+      flex: 1;
+    }
 
     .box {
       align-self: center;
@@ -465,7 +471,7 @@ nav {
       border: 1px solid #edeef4;
       padding: 20px;
       background: #fff;
-      min-height: 200px;
+      min-height: 210px;
 
       @include phone {
         min-height: 300px;
@@ -539,6 +545,12 @@ nav {
           &-4 {
             div {
               background: #f50138;
+            }
+          }
+
+          &-5 {
+            div {
+              background: #000;
             }
           }
         }
