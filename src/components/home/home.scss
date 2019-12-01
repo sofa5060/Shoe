@@ -51,6 +51,7 @@ body {
 
   input[type="submit"] {
     cursor: pointer;
+    -webkit-appearance: none;
   }
 
   input:focus {
@@ -474,7 +475,7 @@ nav {
       min-height: 210px;
 
       @include phone {
-        min-height: 300px;
+        min-height: 320px;
       }
 
       .left {

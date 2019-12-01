@@ -101,7 +101,7 @@ export default class Home extends Component {
                   />
                 </div>
                 <div className="middle">
-                  <h3>Nike motherfucker nice sneakers for men</h3>
+                  <h3>Free RN 2018 Ladies Running Shoes</h3>
                   <div className="color color-1">
                     <div></div>
                     <h5>Blue</h5>
@@ -169,7 +169,7 @@ export default class Home extends Component {
                   <h3>Daniel Wellington Women's 0511DW Classic Bristol</h3>
                   <div className="color color-5">
                     <div></div>
-                    <h5>Red</h5>
+                    <h5>Black</h5>
                   </div>
                   <h4>$30.99</h4>
                   <h6>$60.00</h6>

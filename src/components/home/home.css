@@ -34,6 +34,7 @@ body {
 
 body input[type="submit"] {
   cursor: pointer;
+  -webkit-appearance: none;
 }
 
 body input:focus {
@@ -558,7 +559,7 @@ nav .down li {
 
 @media (max-width: 500px) {
   .section-2 .row .box {
-    min-height: 300px;
+    min-height: 320px;
   }
 }
 
